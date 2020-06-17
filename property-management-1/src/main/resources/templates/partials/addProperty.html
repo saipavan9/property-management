@@ -1,0 +1,38 @@
+	<div class="modal fade" id="addProperty" tabindex="-1" role="dialog" aria-labelledby="Add Property" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLongTitle">Add Property</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+			      
+	      	<form th:action="@{/propertySave}"  method="POST">
+	          <div class="row register-form">
+	            <div class="col-md-12">
+	               <div class="form-group">
+	                   <input type="text" name="propertyName" class="form-control" placeholder="Property Name *" value="">
+	               </div>
+	               <div class="form-group">
+							<textarea class="form-control" name="address" placeholder="Address *" id="exampleFormControlTextarea1" rows="3"></textarea>
+	               </div>
+	               <div class="form-group">
+	                   <input type="text" name="noOfbeds" class="form-control" placeholder="Number of Beds *" value="">
+	               </div>
+	               <div class="form-group">
+	                   <input type="text" name="sizeOfProperty" class="form-control" placeholder="Property Size(in Sft)*" value="">
+	               </div>
+	               
+	           </div>
+	          </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-primary">Add</button>
+	      </div>
+	    </form>
+    </div>
+  </div>
+</div>

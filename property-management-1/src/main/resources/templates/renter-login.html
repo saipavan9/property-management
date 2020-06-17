@@ -1,0 +1,53 @@
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/e935df7576.js"></script>
+	<link href="css/login.css" rel="stylesheet"> 
+</head>
+<body>
+		<div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="">
+                        <h3>Welcome</h3>
+                        <p>You are 30 seconds away from managing your property</p>
+                        <a href="/register"><input type="submit" name="" value="Register"></a><br>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Login</h3>
+                                <form th:action="@{/renter-login}" method="POST">
+                                	<div class="row register-form justify-content-center">
+                                    	<div class="col-md-8">
+                                       	 <div class="form-group">
+                                            <input type="text"  name="username" class="form-control" placeholder="Your Email / Username *" value="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password" class="form-control" placeholder="Password *" value="">
+                                        </div>
+                                         <div class="form-group">
+                                         	<input type="submit" class="btnRegister" value="Login">   
+                            				<a href="#" class="ForgetPwd">Forget Password?</a>
+                                         </div>
+                                             <div class="form-group" style="text-align:right;margin-top:10%"> 
+                            					<a href="/tenant-login" class="ForgetPwd">Login as Tenant</a>
+                            					<i class="fa fa-arrow-right" aria-hidden="true" style="color:#0062cc"></i>
+                                         	</div>
+                                    </div>
+                                
+                                    </div>
+                                    
+                                </div>
+                                 </form>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                           
+ </body>
+</html>
