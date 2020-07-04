@@ -5,7 +5,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/e935df7576.js"></script>
-	<link href="css/login.css" rel="stylesheet"> 
+	<link href="/css/login.css" rel="stylesheet"> 
 </head>
 <body>
 		<div class="container register">
@@ -19,12 +19,12 @@
                     <div class="col-md-9 register-right">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <h3 class="register-heading">Login as Tenant</h3>
-                                <form method="POST">
+                                <h3 class="register-heading">Login</h3>
+                                <form th:action="@{/renter/login}" method="POST">
                                 	<div class="row register-form justify-content-center">
                                     	<div class="col-md-8">
                                        	 <div class="form-group">
-                                            <input type="email"  name="username" class="form-control" placeholder="Your Email / Username *" value="">
+                                            <input type="text"  name="username" class="form-control" placeholder="Your Email / Username *" value="">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password" class="form-control" placeholder="Password *" value="">
@@ -34,7 +34,7 @@
                             				<a href="#" class="ForgetPwd">Forget Password?</a>
                                          </div>
                                              <div class="form-group" style="text-align:right;margin-top:10%"> 
-                            					<a href="/renter-login" class="ForgetPwd">Login as Renter</a>
+                            					<a href="/tenant/login" class="ForgetPwd">Login as Tenant</a>
                             					<i class="fa fa-arrow-right" aria-hidden="true" style="color:#0062cc"></i>
                                          	</div>
                                     </div>

@@ -4,7 +4,7 @@ $(document).ready(function(){
 	var valid2 = true;
 	
 	$("#renter-email").on('blur',function(){
-		
+		console.log("fired");
 		var email = $("#renter-email").val();
 		
 		if (email == '') {

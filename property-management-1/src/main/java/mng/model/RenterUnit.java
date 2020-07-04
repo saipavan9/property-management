@@ -32,6 +32,9 @@ public class RenterUnit {
 	
 	private String sizeOfProperty;
 	
+	@Column(columnDefinition = "boolean default false")
+	private Boolean status;
+	
 	@ToString.Exclude
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="renter_id",nullable = false)

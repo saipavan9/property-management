@@ -1,0 +1,137 @@
+<html>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Properties Page</title>
+  
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  
+  <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+  
+<body id="page-top">
+
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+  
+  	<div th:insert="partials/sidebar"></div>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+		<div th:insert="partials/nav"></div>
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Properties</h1>
+            
+            	<a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#addProperty">
+                    <span class="icon text-white-50" style="padding-top: 10px;padding-bottom: 8px;">
+                      <i class="fas fa-plus-square"></i>
+                    </span>
+                    <span class="text">Add properties</span>
+                  </a>
+          </div>
+           
+          
+ 		<div class="row">
+
+            <div class="col-lg-3" th:each="property: ${properties}">
+			              <!-- Dropdown Card Example -->
+              <div class="card shadow mb-4" >
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary" th:text="${property.propertyName}">Property Name</h6>
+                  	<div class="dropdown no-arrow">
+                    	<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      		<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    	</a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#editProperty"  th:attrappend="data-target=${property.id}"><i class="far fa-edit" ></i> Edit</a>
+                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#deleteProperty"  th:attrappend="data-target=${property.id}" style="color:red"><i class="far fa-minus-square" ></i> Delete</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <p>Property Address: <span th:text="${property.address}"></span></p>
+                  <p>No Of Beds: <span th:text="${property.noOfbeds}"></span> </p>
+                  <p> Property Size:  <span th:text="${property.sizeOfProperty}"></span> </p>
+                </div>
+              </div>
+					<div th:insert="partials/editProperty"></div>
+					
+					  <div class="modal fade" id="deleteProperty" tabindex="-1" role="dialog" aria-labelledby="delete Modal" aria-hidden="true" th:attrappend="id=${property.id}">
+					    <div class="modal-dialog" role="document">
+					      <div class="modal-content">
+					        <div class="modal-body">Are you sure you want to delete <b>[[${property.propertyName}]]</b> property?</div>
+					        <div class="modal-footer">
+					          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					          <a class="btn btn-danger" th:href="@{/property/delete/}+${property.id}">Delete</a>
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+            </div>
+
+          </div>
+
+
+			<div th:insert="partials/addProperty"></div>
+
+			
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+
+	<nav aria-label="Pagination" th:if="${properties.totalPages gt 0}">
+	  <ul class="pagination justify-content-center">
+	    <li class="page-item" th:classappend="${properties.hasPrevious()}? '' : 'disabled'">
+	      <a class="page-link" href="#" tabindex="-1">Previous</a>
+	    </li>
+	    <li class="page-item" th:classappend="${properties.number == i}? 'active' : ''"  th:each="i: ${#numbers.sequence(0,properties.totalPages - 1)}">
+	    	<a class="page-link" th:href="@{/(page=${i+1})}">[[${i}+1]]</a></li>
+	    <li class="page-item" th:classappend="${properties.hasNext()}? '' : 'disabled'">
+	      <a class="page-link" href="#">Next</a>
+	    </li>
+	  </ul>
+	</nav>
+
+
+
+
+
+
+  <div th:insert="partials/footer"></div>
+    </div>
+    <!-- End of Content Wrapper -->
+
+ 
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -35,14 +35,14 @@ public class RegistrationController {
 		  @PostMapping("/renter")
 		  public String processRenter(RegistrationForm form) {			  
 			  renterRepo.save(form.toRenter(passwordEncoder));
-		    return "redirect:/renter-login";
+		    return "redirect:/renter/login";
 		  }
 		  
 		  
 		  @PostMapping("/tenant")
 		  public String processTenant(RegistrationForm form) {
 			  tenantRepo.save(form.toTenant(passwordEncoder));
-		    return "redirect:/tenant-login";
+		    return "redirect:/tenant/login";
 		  }
 		  
 

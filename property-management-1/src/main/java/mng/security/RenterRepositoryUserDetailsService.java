@@ -12,15 +12,9 @@ import mng.model.Renter;
 @Service
 public class RenterRepositoryUserDetailsService implements UserDetailsService {
 
-	
+	@Autowired
 	private RenterRepository renterRepo;
 	
-	@Autowired
-	public RenterRepositoryUserDetailsService(RenterRepository renterRepo) {
-		// TODO Auto-generated constructor stub
-		this.renterRepo = renterRepo;
-	}
-
 	
 	
 	@Override
