@@ -23,10 +23,9 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @NoArgsConstructor(force=true)
 @RequiredArgsConstructor
-//@Table(uniqueConstraints={@UniqueConstraint(columnNames={"username","email"})})
 public class Tenant implements UserDetails{
+	private static final long serialVersionUID = 1L;
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long tenant_id;

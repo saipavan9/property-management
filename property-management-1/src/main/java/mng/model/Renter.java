@@ -58,7 +58,6 @@ public class Renter implements UserDetails {
 	@OneToMany(mappedBy = "renter",fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<RenterUnit> properties = new ArrayList<>();
 	
-	
 	@Override
 	  public Collection<? extends GrantedAuthority> getAuthorities() {
 	    return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));

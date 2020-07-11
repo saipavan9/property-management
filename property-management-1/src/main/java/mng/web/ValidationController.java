@@ -1,6 +1,7 @@
 package mng.web;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import mng.data.RenterRepository;
@@ -19,7 +20,7 @@ public class ValidationController {
 	}
 	
 	  @PostMapping("/validEmail")
-	  public String validEmail(String email,String type) {
+	  public String validEmail(@RequestParam String email,@RequestParam String type) {
 		  
 		  if(type.equals("renter"))
 			  return renterRepo.existsRenterByEmail(email).toString();

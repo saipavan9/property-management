@@ -11,6 +11,17 @@ $(document).ready(function(){
 		 return;
 		}
 		
+		
+//		fetch("/validEmail",{
+//			method: "POST",
+//			body: JSON.stringify({
+//				"email": email,
+//				"type": "renter"
+//			})
+//		})
+//		.then(response => response.json())
+//		.then(json => console.log(json));
+		
 		$.ajax({
 			  url: "/validEmail",
 			  type: "POST",
@@ -127,6 +138,18 @@ $(document).ready(function(){
 	}
 	
 	
+	
+	
+	
+	
+	
+
+	$("#upload").hide();
+
+	
+ $("#add").one("click",function(){
+	 $("#upload").toggle();
+ })
 	
 });
 

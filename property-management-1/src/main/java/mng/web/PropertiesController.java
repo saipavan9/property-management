@@ -120,7 +120,7 @@ public class PropertiesController {
 		
 		model.addAttribute("properties",props);
 		
-		return "tenant/property";
+		return "renter/property";
 	}
 	
 

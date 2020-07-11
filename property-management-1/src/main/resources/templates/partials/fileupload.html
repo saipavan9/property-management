@@ -1,0 +1,51 @@
+	<div class="modal fade" id="uploadDoc" tabindex="-1" role="dialog" aria-labelledby="Upload Documents" aria-hidden="true" th:attrappend="id=${property.id}">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">My Documents</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+			 <div class="form-group">
+			    <label for="exampleFormControlSelect1">Please select one the documents to view:</label>
+			    <select class="form-control">
+			    </select>
+			    
+			   <button class="btn btn-primary float-right " style="margin-top:10px" id="preview">
+                    <span class="text">Preview</span>			  
+			  </button>
+			  </div>
+			  
+
+			   <button class="btn btn-primary btn-sm btn-icon-split" id="add"  th:onclick="'javascript:toggle(\'' + ${property.id} + '\');'">
+			   <span class="icon text-white-50" style="padding-top: 10px;padding-bottom: 8px;">
+                      <i class="fas fa-plus-square"></i>
+                    </span>
+                    <span class="text">Add Documents</span>			  
+			  </button>
+			  <div style="margin-top:20px;">
+			 <form action="/uploadFile"  method="POST" id="upload" th:attrappend="id=${property.id}" enctype="multipart/form-data" style="display: none;">
+	          <div class="row register-form">
+	            <div class="col-md-12">
+	            	<input type="hidden" th:value=${property.id} name="id">
+	               <div class="form-group">
+	                   <input type="text" name="doc_name" class="form-control" placeholder="Document Name *" value="">
+	             </div>
+	             <div class="form-group">
+	             	 <div class="custom-file">
+						    <input type="file" class="custom-file-input" name="file">
+						    <label class="custom-file-label">Choose file</label>
+						  </div>
+					</div>
+	             </div>
+	          </div>
+	         <button type="submit" class="btn btn-primary">Upload</button>
+	        </form>
+	        </div>
+		  </div>
+
+    </div>
+  </div>
+</div>

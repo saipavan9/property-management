@@ -12,6 +12,13 @@
   
   <link href="/css/sb-admin-2.min.css" rel="stylesheet">
   
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js"></script>
+<script src="js/upload.js" type="text/javascript"></script>
+  
 <body id="page-top">
 
 
@@ -56,6 +63,7 @@
                       		<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                     	</a>
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#uploadDoc"  th:attrappend="data-target=${property.id}"   th:onclick="'javascript:getFiles(\'' + ${property.id} + '\');'"><i class="fas fa-plus" ></i> Add Documents</a>
                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#editProperty"  th:attrappend="data-target=${property.id}"><i class="far fa-edit" ></i> Edit</a>
                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#deleteProperty"  th:attrappend="data-target=${property.id}" style="color:red"><i class="far fa-minus-square" ></i> Delete</a>
                     </div>
@@ -66,9 +74,13 @@
                   <p>Property Address: <span th:text="${property.address}"></span></p>
                   <p>No Of Beds: <span th:text="${property.noOfbeds}"></span> </p>
                   <p> Property Size:  <span th:text="${property.sizeOfProperty}"></span> </p>
+                  <p> Status : <span style="padding:5px;"
+            	  th:class="${!property.status}? 'bg-danger text-white' : 'bg-success text-white'"
+                  th:text="${!property.status}? 'Not Rented' : 'Rented'"></span></p>
                 </div>
               </div>
 					<div th:insert="partials/editProperty"></div>
+					<div th:insert="partials/fileupload.html"></div>
 					
 					  <div class="modal fade" id="deleteProperty" tabindex="-1" role="dialog" aria-labelledby="delete Modal" aria-hidden="true" th:attrappend="id=${property.id}">
 					    <div class="modal-dialog" role="document">
@@ -127,11 +139,5 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
-
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
