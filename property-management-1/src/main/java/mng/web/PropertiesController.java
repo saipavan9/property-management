@@ -124,5 +124,9 @@ public class PropertiesController {
 	}
 	
 
+	@GetMapping("/rent")	
+	public String getsome() {
+		return "renter/rent";
+	}
 
 }

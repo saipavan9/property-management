@@ -34,7 +34,7 @@ public class TenantSecurityConfig extends WebSecurityConfigurerAdapter{
 			.and()
 		.logout()
 			.logoutUrl("/tenant/logout")
-			.logoutSuccessUrl("/renter/login").clearAuthentication(true)
+			.logoutSuccessUrl("/login/renter").clearAuthentication(true)
 			.invalidateHttpSession(true)
 			.deleteCookies("JSESSIONID")
 			.permitAll()

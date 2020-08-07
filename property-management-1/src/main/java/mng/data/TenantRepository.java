@@ -1,5 +1,7 @@
 package mng.data;
 
+import java.util.Map;
+
 import org.springframework.data.repository.CrudRepository;
 
 import mng.model.Tenant;

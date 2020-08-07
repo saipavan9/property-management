@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   
   <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+   <link href="/css/loader.css" rel="stylesheet">
   
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -20,11 +21,14 @@
 <script src="js/upload.js" type="text/javascript"></script>
   
 <body id="page-top">
-
-
   <!-- Page Wrapper -->
   <div id="wrapper">
+
   
+      <div class="overlay">
+    	<div id="loading-img" ></div>
+    	<img alt="" src="/images/loader1.svg">
+	</div>
   	<div th:insert="partials/sidebar"></div>
 
     <!-- Content Wrapper -->
@@ -32,6 +36,8 @@
 
       <!-- Main Content -->
       <div id="content">
+     
+	
 
 		<div th:insert="partials/nav"></div>
         <!-- Begin Page Content -->
@@ -78,6 +84,9 @@
             	  th:class="${!property.status}? 'bg-danger text-white' : 'bg-success text-white'"
                   th:text="${!property.status}? 'Not Rented' : 'Rented'"></span></p>
                 </div>
+                  <div th:if="${!property.status}" class="card-footer text-center" style="padding:0">
+                  	<button class="btn btn-success" style="width:100%;" >Rent Now!!</button>
+				  </div>
               </div>
 					<div th:insert="partials/editProperty"></div>
 					<div th:insert="partials/fileupload.html"></div>

@@ -35,7 +35,7 @@ public class RegistrationController {
 		  @PostMapping("/renter")
 		  public String processRenter(RegistrationForm form) {			  
 			  renterRepo.save(form.toRenter(passwordEncoder));
-		    return "redirect:/renter/login";
+		    return "redirect:/login/renter";
 		  }
 		  
 		  

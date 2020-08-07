@@ -1,19 +1,17 @@
 package mng.web;
-
-import java.io.IOException;
-import java.util.ArrayList;
+import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.catalina.connector.Response;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +35,8 @@ public class FilesController {
 	@Autowired
 	private FilesRepository filesRepo;
 	
+	@Value("${file.upload.dir}") String dir;
+	
 	@PostMapping("/uploadFile")
 	public String upload(@RequestParam("file") MultipartFile file,@RequestParam("doc_name")String docType,@RequestParam("id")String prop_id) {
 		
@@ -59,39 +59,28 @@ public class FilesController {
 		return names;
 	}
 	
-	@GetMapping("/download")
-	public ResponseEntity<Resource> getDownloadUrl(@RequestParam String name,
+	@GetMapping(value = "/download", produces=MediaType.APPLICATION_PDF_VALUE)
+	public @ResponseBody ResponseEntity<Resource> getDownloadUrl(@RequestParam String name,
 			HttpServletRequest request) {
 		
-		String fileName = name+".pdf";
+		String fileName = "/"+name+".pdf";
+		Path path = Paths.get(dir+fileName);
+				
         Resource resource = null;
-       
-        if(fileName !=null && !fileName.isEmpty()) {
+        
         try {
-            resource = storageService.loadFileAsResource(fileName);
-            byte[] temp = resource.getInputStream().readAllBytes();
-        } catch (Exception e) {
-            e.printStackTrace();
+        	resource = new UrlResource(path.toUri());
+        }catch(MalformedURLException ex) {
+        	ex.printStackTrace();
         }
-        String contentType = null;
-        try {
-             contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-           } catch (IOException ex) {
-        	 ex.printStackTrace();  
-            }
-           if(contentType == null) {
-                contentType = "application/octet-stream";
-          }
+        String contentType = "application/octet-stream";
+        
         
        return ResponseEntity.ok()
     		   .contentType(MediaType.parseMediaType(contentType))
     		   .header(HttpHeaders.CONTENT_DISPOSITION,String.format("inline; filename=\"" + resource.getFilename() + "\""))
     		   .body(resource);
-	 }else {
-		return ResponseEntity.notFound().build();
-	}
-        
-	}
+	 }
 	
 	@GetMapping("/demo")
 	public String demo() {

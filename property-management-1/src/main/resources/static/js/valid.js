@@ -137,19 +137,9 @@ $(document).ready(function(){
 		$("#tenant-submit").attr("disabled", false);
 	}
 	
-	
-	
-	
-	
-	
-	
+ 
+ 
 
-	$("#upload").hide();
-
-	
- $("#add").one("click",function(){
-	 $("#upload").toggle();
- })
 	
 });
 

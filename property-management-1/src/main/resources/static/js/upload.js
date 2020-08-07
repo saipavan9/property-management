@@ -44,7 +44,14 @@ $(document).ready(function(){
 //		var item = $(event.target).parent().siblings("div").children("form");
 //		item.toggle("slow","linear");
 //	})
-//	
+//	'
+	
+	 $('#loading-image').bind('ajaxStart', function(){
+		    $(this).show();
+		    console.log("yes");
+		}).bind('ajaxStop', function(){
+		    $(this).hide();
+		});
 	
 	$("#preview").on("click",function(){
 		
@@ -63,6 +70,7 @@ $(document).ready(function(){
 		
 	})
 		
+
 		
 		
 		
